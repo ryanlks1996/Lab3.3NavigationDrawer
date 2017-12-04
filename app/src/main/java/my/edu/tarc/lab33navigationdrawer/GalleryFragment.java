@@ -34,6 +34,7 @@ public class GalleryFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_gallery, container, false);
         imageViewPhoto = (ImageView) v.findViewById(R.id.imageViewPhoto);
+
         Button buttonGetFile = (Button) v.findViewById(R.id.buttonGetFile);
         buttonGetFile.setOnClickListener(new View.OnClickListener() {
 
@@ -41,10 +42,10 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent,"Select picture"),REQUEST_PICK);
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select picture"), REQUEST_PICK);
 
             }
         });
@@ -54,9 +55,9 @@ public class GalleryFragment extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_PICK && resultCode == RESULT_OK){
+        if (requestCode == REQUEST_PICK && resultCode == RESULT_OK) {
             Uri uri = null;
-            if(data!=null){
+            if (data != null) {
                 uri = data.getData();
                 imageViewPhoto.setImageURI(uri);
             }
