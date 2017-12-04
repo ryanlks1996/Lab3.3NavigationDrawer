@@ -42,7 +42,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
 
                     Intent intent = new Intent(Intent.ACTION_PICK);
-                    startActivityForResult(intent,REQUEST_PICK);
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent,"Select picture"),REQUEST_PICK);
 
             }
         });
